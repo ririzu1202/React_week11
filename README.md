@@ -46,3 +46,16 @@
 - PowerShell에서 "스크립트를 실행할 수 없습니다" 에러 발생 시
   → Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 - 포트 충돌 시 → npm run dev -- --port 3000
+
+
+-----
+
+가장 빠른 방법
+
+Win + R → firewall.cpl 입력 → Enter
+왼쪽 메뉴에서 “Windows Defender 방화벽을 통해 앱 또는 기능 허용”
+목록에서 Node.js JavaScript Runtime을 찾아 체크박스 변경
+여기서는 "프라이빗"이 **”개인"**으로 표시돼요. 열 이름은 "개인"과 "공용"입니다.
+
+
+다른 경로: 시작 메뉴에서 Windows 보안 → 방화벽 및 네트워크 보호 → 방화벽에서 앱 허용을 누르면 같은 화면이 열립니다.
