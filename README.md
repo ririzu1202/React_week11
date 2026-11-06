@@ -1,5 +1,15 @@
 #[미니 리액트 개발 환경 명령어 정리]
 
+■ 0. Node.js 설치 (컴퓨터에 한 번만)
+- 방법 A: 공식 설치 파일 (Windows / macOS 공통)
+  - nodejs.org 접속 → LTS 버전 다운로드
+  - Windows: .msi 실행 → 기본값으로 Next 진행
+  - "Automatically install the necessary tools" 체크박스는 체크 안 해도 됨
+  - macOS: .pkg 실행 → 기본값으로 진행
+- 방법 B: 명령어로 설치 (Windows)
+  - winget install OpenJS.NodeJS.LTS
+- 설치 후 열려 있던 터미널과 VS Code는 완전히 껐다가 다시 열기
+
 ■ 1. Node 설치 확인 (nodejs.org에서 LTS 설치 후)
 - node -v
 - npm -v
