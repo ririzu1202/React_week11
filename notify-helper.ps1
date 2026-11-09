@@ -112,7 +112,12 @@ public static class PageWindow {
 # 알림 XML에 그대로 들어가므로 길이를 자르고 특수 문자를 바꿉니다.
 function Get-SafeText($value) {
   $text = [string]$value
-  if ($text.Length -gt $MaxTextLength) { $text = $text.Substring(0, $MaxTextLength) }
+  if ($text.Length -gt $MaxTextLength) {
+    # 이모지는 두 칸을 써서, 반만 남기면 알림 XML이 깨집니다. 그때는 이모지 앞에서 자릅니다.
+    $cut = $MaxTextLength
+    if ([char]::IsHighSurrogate($text[$cut - 1])) { $cut-- }
+    $text = $text.Substring(0, $cut)
+  }
   return [System.Security.SecurityElement]::Escape($text)
 }
 
