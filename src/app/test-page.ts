@@ -514,7 +514,15 @@ function TaskRow(props: TaskRowProps): VNode {
     h('span', { class: 'task-plan' }, `계획 ${task.plannedMinutes}분`),
     h(
       'span',
-      { class: task.focusedSeconds > task.plannedMinutes * 60 ? 'task-minutes is-over-plan' : 'task-minutes' },
+      // 계획 시간에 도달하면(같아도) 색을 칠하고, 넘었을 때만 is-over-plan 을 따로 붙입니다.
+      {
+        class:
+          task.focusedSeconds > task.plannedMinutes * 60
+            ? 'task-minutes is-plan-met is-over-plan'
+            : task.focusedSeconds === task.plannedMinutes * 60
+              ? 'task-minutes is-plan-met'
+              : 'task-minutes',
+      },
       `총 ${formatDuration(task.focusedSeconds)}`,
     ),
     h(

@@ -1153,7 +1153,7 @@ mark {
 
   .history-buttons {
     grid-column: 1 / -1;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .timeline {
@@ -1269,8 +1269,8 @@ mark {
   padding-right: 96px;
 }
 
-/* 계획을 넘겨서 한 시간은 두 테마 모두 밝은 초록으로 표시합니다. */
-.task-minutes.is-over-plan {
+/* 계획 시간에 도달했거나 넘긴 시간은 두 테마 모두 밝은 초록으로 표시합니다. */
+.task-minutes.is-plan-met {
   background: #4ade80;
   color: #0f2a1c;
 }

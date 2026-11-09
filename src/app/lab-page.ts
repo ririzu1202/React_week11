@@ -118,6 +118,7 @@ function renderLayout(handlers: {
   onPatch: () => void
   onBack: () => void
   onForward: () => void
+  onFirst: () => void
   onMode: (mode: TestMode) => void
   onScenario: (scenario: Scenario) => void
   onCodeKeyDown: (event: Event) => void
@@ -155,6 +156,8 @@ function renderLayout(handlers: {
           { class: 'history-buttons' },
           h('button', { type: 'button', class: 'quiet-button', 'data-role': 'back', onClick: handlers.onBack }, '뒤로가기'),
           h('button', { type: 'button', class: 'quiet-button', 'data-role': 'forward', onClick: handlers.onForward }, '앞으로가기'),
+          // 초기화가 아니라 기록의 첫 버전(v1)으로 이동합니다. 뒤 기록은 그대로 남아 앞으로가기로 돌아갈 수 있습니다.
+          h('button', { type: 'button', class: 'quiet-button', 'data-role': 'first', onClick: handlers.onFirst }, 'v1로'),
         ),
         h('ol', { class: 'timeline', 'data-role': 'timeline', 'aria-label': '저장된 버전' }),
       ),
@@ -292,6 +295,7 @@ export function createLabPage(): HTMLElement {
     onPatch: () => controls?.patch(),
     onBack: () => controls?.back(),
     onForward: () => controls?.forward(),
+    onFirst: () => controls?.jumpTo(0),
     onMode: (mode) => testArea?.setMode(mode),
     onScenario(scenario) {
       if (!testArea) return
@@ -318,6 +322,7 @@ export function createLabPage(): HTMLElement {
   const timeline = required<HTMLElement>(page, '[data-role="timeline"]')
   const backButton = required<HTMLButtonElement>(page, '[data-role="back"]')
   const forwardButton = required<HTMLButtonElement>(page, '[data-role="forward"]')
+  const firstButton = required<HTMLButtonElement>(page, '[data-role="first"]')
   testArea = createTestArea(page)
 
   // 샘플 속 링크나 폼이 실험 페이지를 떠나게 만들지 않도록 막습니다.
@@ -363,6 +368,7 @@ export function createLabPage(): HTMLElement {
     timeline.replaceChildren(...items)
     backButton.disabled = !history.canBack
     forwardButton.disabled = !history.canForward
+    firstButton.disabled = history.position === 0
   }
 
   function messageFor(action: LabTransition['action'], changes: number, version: number): string {
