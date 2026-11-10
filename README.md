@@ -20,27 +20,6 @@ Virtual DOM, Diff, Patch와 함수형 컴포넌트, Hooks를 프레임워크 없
 웹페이지는 PC 기능을 직접 부를 수 없어서 `notify-helper.ps1`이 중간 다리 역할을 합니다.
 이 PC 안의 요청만 받습니다. 켜지 않아도 앱은 그대로 동작하고 알림만 나오지 않습니다.
 
-## 개발 명령
-
-```bash
-npm install
-```
-
-```bash
-npm run dev
-```
-
-```bash
-npm run test:run
-```
-
-```bash
-npm run build
-```
-
-```bash
-npm run single
-```
 
 ## 구현한 것
 
