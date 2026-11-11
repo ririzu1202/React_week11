@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "single": "npm run build && node build-single-file.mjs",
     "test": "node --test --watch \"src/__tests__/**/*.test.ts\"",
-    "test:run": "node --test \"src/__tests__/**/*.test.ts\""
+    "test:run": "node --test \"src/__tests__/**/*.test.ts\"",
+    "test:common": "node common-test/run.mjs",
+    "test:all": "npm run test:run && npm run test:common"
   },
   "devDependencies": {
     "jsdom": "^31.0.0",

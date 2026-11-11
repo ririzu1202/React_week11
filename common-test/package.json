@@ -1,0 +1,12 @@
+{
+  "name": "mini-react-common-test",
+  "version": "0.3.0",
+  "private": true,
+  "description": "미니 React Phase 1 공통 인수 테스트 (세 구현에 똑같이 적용)",
+  "scripts": {
+    "test": "node --test tests/module.test.js tests/page.test.js selfcheck/ia-judge.test.js selfcheck/inspection.test.js",
+    "test:inspection": "node --test selfcheck/ia-judge.test.js selfcheck/inspection.test.js",
+    "test:judge": "node --test selfcheck/ia-judge.test.js"
+  },
+  "type": "commonjs"
+}
